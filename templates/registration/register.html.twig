@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+{% block subtitle %}Remplissez le forumlaire pour créer un compte{% endblock %}
+
+{% block body %}
+    <h1 class="h3 mb-3 font-weight-normal">Inscription</h1>
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.name) }}
+        {{ form_row(registrationForm.plainPassword) }}
+
+        <input type="submit" class="btn btn-primary" value="Inscription" />
+    {{ form_end(registrationForm) }}
+{% endblock %}

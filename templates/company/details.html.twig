@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ company.name }}{% endblock %}
+
+{% block body %}
+    <h1 class="h3 mb-3 font-weight-normal">
+        Entreprise "{{ company.name }}"
+    </h1>
+
+    <h2 class="h3 mb-3 font-weight-normaldescription">Description</h2>
+    <em>
+        {{ company.description }}
+    </em>
+
+
+    <h2 class="h3 mb-3 font-weight-normaldescription">Créneaux</h2>
+    
+    {% if company.slots|length %}
+    <div class="row">
+    {% for slot in company.slots %}
+    <div class="col-sm-2 bg-success slot m-1 text-white">
+        {{ slot.time }}
+    </div>
+    {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-danger">
+        Aucun créneau
+    </div>
+    {% endif %}
+
+    <a href="{{ path('company_index') }}">&laquo; retour à la liste</a>
+
+    {{ include('company/_delete_form.html.twig') }}
+{% endblock %}
